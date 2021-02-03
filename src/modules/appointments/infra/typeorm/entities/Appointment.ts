@@ -7,6 +7,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
+
 import User from '@modules/users/infra/typeorm/entities/User';
 
 @Entity('appointments')
@@ -17,22 +18,25 @@ class Appointment {
   @Column()
   provider_id: string;
 
-  @Column('time with time zone') // type colum
-  date: Date; // name property
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'provider_id' })
+  provider: User;
+
+  @Column()
+  user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+
+  @Column('timestamp with time zone')
+  date: Date;
 
   @CreateDateColumn()
   created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
-
-  // relationship
-  // oneToOne (um para um)
-  // OneToMany (um para muitos)
-  // ManyToMany (muito para muitos)
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'provider_id' })
-  provider: User;
 }
 
 export default Appointment;

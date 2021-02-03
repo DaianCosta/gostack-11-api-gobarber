@@ -1,71 +1,78 @@
-# Recuperação de senha
+# Tarefas Macro
 
-**RF**
+# Recuperação de Senha
 
-- O usuário deverá poder recuperar sua senha informando o seu e-mail;
-- O usuário deverá receber um e-mail com instruções de recuoeração de senha;
-- O usuário deverá poder resetar sua senha;
+**RNF - Requisito Não Funcional**
 
-**RNF**
+- O usuário deve poder recuperar sua senha informando o seu e-mail;
+- O usuário deve receber um e-mail com instruções de recuperação de senha;
+- O usuário deve poder resetar sua senha;
 
-- Utilizar Mailtrap para testar envio de e-mail em ambiente de dev;
+**RF - Requisito Funcional**
+
+- Utilizar MailTrap para testar envios em ambiente de dev;
 - Utilizar Amazon SES para envios em produção;
-- O envio de e-mail deverá acontecer em segundo plano (background job);
+- O envio  de e-mails deve acontecer em segundo plano (background jobs);
 
-**RN**
+**RN - Requisito de Negócio**
 
-- O link enviado por e-mail para resetar senha, deverá expirar em 2h;
-- O usuário precisara confirmar a nova senha ao efetuar a recuperação de senha;
+- O link enviado por email para resetar senha, deve expirar em 2h;
+- O usuário precisa confirmar a nova senha ao resetar sua senha;
 
-# Atualização do perfil
+
+
+# Atualização do Pefil
 
 **RF**
 
-- O usuário deverá atualizar o seu nome, e-mail e senha;
-
-**RNF**
+- O usuário deve poder atualizar seu nome, email e senha;
 
 **RN**
 
-- O usuário não poderá alterar seu e-mail para um e-mail já utilizado;
-- Para atualizar sua senha, o usuário deverá informar a senha antiga;
-- Para atualizar sua senha, o usuário precisara confirmar a nova senha;
+- O usuário não pode alterar seu e-mail para um e-mail já utilizado;
+- Para atualizar sua senha, o usuário deve informar a senha antiga;
+- Para atualizar sua senha, o usuário precisa confirmar a nova senha;
 
 # Painel do prestador
 
 **RF**
 
-- O usuário deverá poder listar seus agendamentos de um dia específico;
-- O prestador deverá receber uma notificação sempre que houver um novo agendamento;
-- O prestador deverá poder visualizar as notificações não lidas;
+- O usuário deve poder listar seus agendamentos de um dia especifico;
+- O prestador deve receber uma notificação sempre que houver um novo agendamento;
+- O prestador deve poder visualizar as notificações não lidas;
+
 
 **RNF**
 
-- Os agendamentos do prestador no dia, deverão se rarmazenados no cache;
-- As notificações do prestador deverão ser armazenadas no MongoDB;
-- As notificações do prestador deverão ser enviadas em tempo-real utilizando Socket.io;
+- Os agendamentos do prestador no dia devem ser armazenados em cache;
+- As notificações do prestador devem ser armazenados no MongoDB;
+- As notificações do prestador devem ser enviadas em tempo-real utilizando Socket.io;
+-
 
 **RN**
 
-- A notificação deverá ter um status de lida ou não lida, para o controle do prestador;
+- A notificação deve ter um status de lida ou não-lida para que o prestador possa controlar
 
 # Agendamento de serviços
 
 **RF**
 
-- O usuário deverá poder listar todos os prestadores de serviços cadastrado;
-- O usuário poder listar os dias de um mês com pelo menus um horário disponível de um prestador;
-- O usuário deverá poder listar horários disponíveis em um dia específico de um prestador;
-- O usuário deverá poder realizar um novo agendamento com um prestador;
+- O usuário deve poder listar todos prestadores de serviço cadastrados;
+- O usuário deve poder listar os dias de um mês com pelo menos um horário disponível de um prestador;
+- O usuário deve poder listar horários disponíveis em um dia especifico de um prestador;
+- O usuário deve poder realizar um novo agendamento com um prestador;
 
 **RNF**
 
-- A listagem de prestadores deverá ser armazenada em cache;
+- A listagem de prestadores deve ser armazenada em cache;
+
 
 **RN**
 
-- Cada agendamento deverá durar 1h exatamente;
-- Os agendamentos deverá estar disponíveis entre 8h ás 18h, (Primeiro às 8h e último às 17h);
-- O usuário não deverá agendar em um horário já ocupado;
-- O usuário não poderá agendar em um horário que já passou;
-- O usuário não poderá agendar serviços para consigo mesmo;
+- Cada agendamento deve durar 1h exatamente;
+- Os agendamentos devem estar disponíveis entre 8h às 18hs (Primeiro às 8h, último às 17hs);
+- O usuário não pode agendar em um horário já ocupado;
+- O usuário não pode agendar em um horário que já passou;
+- O usuário não pode agendar serviços consigo mesmo;
+
+

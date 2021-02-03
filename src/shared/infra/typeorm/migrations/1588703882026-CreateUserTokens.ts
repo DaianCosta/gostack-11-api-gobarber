@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateUserTokens1601858794955
+export default class CreateUserTokens1588703882026
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
@@ -10,19 +10,19 @@ export default class CreateUserTokens1601858794955
           {
             name: 'id',
             type: 'uuid',
+            isPrimary: true,
             generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()', // create uuid
-          },
-          {
-            name: 'user_id',
-            type: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
             name: 'token',
             type: 'uuid',
-            isPrimary: true,
             generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()', // create uuid
+            default: 'uuid_generate_v4()',
+          },
+          {
+            name: 'user_id',
+            type: 'uuid',
           },
           {
             name: 'created_at',

@@ -1,12 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
-import AppError from '@shared/errors/AppError';
-import authConfig from '@config/auth';
 
-interface TokenPayload {
+import authConfig from '@config/auth';
+import AppError from '@shared/errors/AppError';
+
+interface ITokenPayload {
   iat: number;
-  ex: number;
-  subject: string;
+  exp: number;
+  sub: string;
 }
 
 export default function ensureAuthenticated(
@@ -24,12 +25,15 @@ export default function ensureAuthenticated(
 
   try {
     const decoded = verify(token, authConfig.jwt.secret);
-    const { subject } = decoded as TokenPayload; // force type variable
 
-    request.user = { id: subject };
+    const { sub } = decoded as ITokenPayload;
+
+    request.user = {
+      id: sub,
+    };
 
     return next();
-  } catch (err) {
+  } catch {
     throw new AppError('Invalid JWT token', 401);
   }
 }
