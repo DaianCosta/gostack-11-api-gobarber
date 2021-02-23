@@ -1,6 +1,5 @@
 import { startOfHour, isBefore, getHours, format } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
-import { zonedTimeToUtc } from 'date-fns-tz';
 
 import AppError from '@shared/errors/AppError';
 
@@ -33,26 +32,7 @@ class CreateAppointmentService {
     provider_id,
     user_id,
   }: IRequest): Promise<Appointment> {
-    console.log({
-      date,
-      provider_id,
-      user_id,
-    });
-
-    const appointmentDateAux = startOfHour(date);
-
-    const appointmentDate = zonedTimeToUtc(
-      appointmentDateAux,
-      'America/Sao_Paulo',
-    );
-
-    console.log({
-      appointmentDate,
-      provider_id,
-      user_id,
-    });
-
-    console.log(getHours(appointmentDate));
+    const appointmentDate = startOfHour(date);
 
     if (isBefore(appointmentDate, Date.now())) {
       throw new AppError("You can't create an appointemnt on a past date.");
