@@ -10,3 +10,4 @@ tmp/*
 !tmp/.gitkeep
 temp/
 /dist
+/ormconfig.json
